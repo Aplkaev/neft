@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/icon" href="{% static 'main/img/favicon.ico' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/css/dropzone.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{% static 'main/script/dropzone.js' %}"></script>
+    <script src="{% static 'main/script/script.js' %}"></script>
+
+    <title>Bash</title>
+</head>
+
+<body>
+
+    <div class=" px-4 py-5 my-5 text-center ">
+        <img class="d-block mx-auto mb-4 " src="{% static 'main/img/logo.jpg' %} " alt=" " width="72 " height="57 ">
+        <h1 class="display-5 fw-bold ">Контрольное задание</h1>
+        <div class="d-flex justify-content-center border-bottom">
+            {% if form.is_multipart %}
+            <form enctype="multipart/form-data" method="post" action="/upload" class="dropzone" id="form_dropzone" data-dz-message> {% else %}
+                <form method="post" action="">
+                    {% endif %} {{ form }}
+                    <div class="dz-message" data-dz-message><span>Перетащите файл сюда или нажмите на кнопку <button class="btn btn-primary">Выбрать Файл</button></span></div>
+                    <input type="submit" value="Отправить" class="btn btn-success"><br /> {% csrf_token %}
+                </form>
+        </div>
+        <br />
+
+
+        <div class=" d-grid gap-2 d-sm-flex justify-content-sm-center border-top p-3">
+
+            <button type="button " class="btn btn-outline-secondary btn-lg px-4" onclick="load_log()">Логи загрузок</button>
+        </div>
+        <div class="log border-bottom">
+
+        </div>
+        <div class="col-lg-6 mx-auto ">
+            <p class="mb-4 text-left ">
+                <h4>Постановка задачи</h4>
+                Постановка задачи: Разработать прототип приложения по приемке геолого-геофизических данных для загрузки в БД РН-КИН.<br /><br /> Данные должны грузиться в таблицу БД. В качестве тестовой допускается использование произвольной БД с возможностью
+                переключения на БД Oracle.<br /><br />В форму Web интерфейса файлы должны помещаться путем перетаскивания мышкой.
+                <br /><br />Содержимое файлов должно помещаться в бинарное поле таблицы.<br /> Если файл представляет собой архив, то он должен на лету разархивироваться и каждый файл из архива должен записываться отдельной строкой в таблицу.
+                <br /><br />Кроме того, должна заполняться дополнительная информация из поля «Дополнительная информация» WEB формы.<br /><br />Приложение должно быть реализовано на Python с WEB интерфейсом<br /><br />Допускается использование уже реализованных
+                компонент.
+                <br /><br />Входные данные: Файлы, почтовые сообщения. Визуализация решения: Интерфейс приложения для загрузки файлов, форма с логом загрузки.
+            </p>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

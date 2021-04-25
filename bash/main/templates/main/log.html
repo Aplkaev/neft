@@ -1,0 +1,16 @@
+<ul>{% for item in data %}
+    <li class="font-weight-normal"><u>Дополнительная информация:</u>
+        <div class="badge text-wrap">{{ item.text }}</div>
+    </li>
+    <u>Дата:</u>
+    <div class="badge text-wrap">
+        {{ item.date_create }}
+    </div>
+    <p class=" font-weight-bold ">Файлы</p>
+    <ul>{% for file in item.file %} - {{ file.file.name }}
+        <div class="badge text-wrap">
+            {{ file.file.date_create }}
+        </div>
+        <br /> {% endfor %}
+    </ul> <br /> {% endfor %}
+</ul>
